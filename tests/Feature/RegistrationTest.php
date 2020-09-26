@@ -25,4 +25,15 @@ class RegistrationTest extends TestCase
 
         $this->assertEquals('bob@test.com', auth()->user()->email);
     }
+
+    /** @test */
+    function email_is_required()
+    {
+        Livewire::test('auth.register')
+            ->set('email', '')
+            ->set('password', 'secret')
+            ->set('passwordConfirmation', 'secret')
+            ->call('register')
+            ->assertHasErrors(['email' => 'required']);
+    }
 }
