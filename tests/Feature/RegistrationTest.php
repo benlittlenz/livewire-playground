@@ -50,6 +50,21 @@ class RegistrationTest extends TestCase
     }
 
     /** @test */
+    function see_email_hasnt_been_taken_as_user_types()
+    {
+        User::create([
+            'email' => 'frank@mail.com',
+            'password' => Hash::make('password')
+        ]);
+
+        Livewire::test('auth.register')
+            ->set('email', 'fran@mail.com')
+            ->assertHasNoErrors()
+            ->set('email', 'frank@mail.com')
+            ->assertHasErrors(['email' => 'unique']);
+    }
+
+    /** @test */
     function email_is_unique()
     {
         User::create([
@@ -98,3 +113,10 @@ class RegistrationTest extends TestCase
                         ->assertHasErrors(['password' => 'same']);
                 }
 }
+
+// https://coursehunter.net/course/baselaravel-prakticheskoe-rukovodstvo-po-optimizacii-koda-laravel
+// https://coursehunter.net/course/eloquent-patterny-proizvoditelnosti
+// https://coursehunter.net/course/laravel-livewire
+// https://coursehunter.net/course/uverennyy-laravel-ot-otsutstviya-testov-do-uverennyh-prilozheniy
+// https://coursehunter.net/course/refactoring-to-collections
+// https://coursehunter.net/course/davayte-postroim-forum-s-laravel-i-tdd

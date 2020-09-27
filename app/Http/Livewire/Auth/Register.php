@@ -12,6 +12,11 @@ class Register extends Component
     public $password = '';
     public $passwordConfirmation = '';
 
+    public function updatedEmail()
+    {
+        $this->validate(['email' => 'unique:users']);
+    }
+
     public function register()
     {
         $data = $this->validate([
@@ -24,7 +29,7 @@ class Register extends Component
             'password' => Hash::make($data['password']),
         ]);
         auth()->login($user);
-        
+
         return redirect('/');
     }
 
