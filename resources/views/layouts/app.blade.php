@@ -2,10 +2,13 @@
     <head>
 
     @livewireStyles
+    <link rel="stylesheet" href="/css/main.css">
     </head>
 
     <body>
-        @yield('content')
+        <main class="container mx-auto">
+            @yield('content')
+        </main>
 
         @livewireScripts
     </body>
