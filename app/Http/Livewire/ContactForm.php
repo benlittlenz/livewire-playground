@@ -15,14 +15,21 @@ class ContactForm extends Component
     public $message;
     public $successMessage;
 
+    protected $rules = [
+        'name' => 'required',
+        'email' => 'required|email',
+        'phone' => 'required',
+        'message' => 'required',
+    ];
+
+    public function updated($propertyName)
+    {
+        $this->validateOnly($propertyName);
+    }
+
     public function submitForm()
     {
-        // $contact = $request->validate([
-        //     'name' => 'required',
-        //     'email' => 'required|email',
-        //     'phone' => 'required',
-        //     'message' => 'required',
-        // ]);
+        $contact = $this->validate();
 
         $contact['name'] = $this->name;
         $contact['email'] = $this->email;
@@ -37,6 +44,7 @@ class ContactForm extends Component
 
         //session()->flash('success_message', );
     }
+
 
     private function resetForm()
     {
