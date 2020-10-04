@@ -17,9 +17,8 @@ class Datatable extends Component
     public function render()
     {
         return view('livewire.datatable', [
-            'users' => User::where('name', 'like', '%' . $this->search . '%')
-                ->orWhere('email', 'like', '%' . $this->search . '%')
-                ->where('active', $this->active)
+            'users' => User::query()
+                ->search($this->search)
                 ->paginate(10)
         ]);
     }
