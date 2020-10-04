@@ -13,6 +13,7 @@
                             </svg>
                         </div>
                         <input
+                            wire:model="search"
                             id="search"
                             class="block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md leading-5 bg-white placeholder-gray-500 focus:outline-none focus:placeholder-gray-400 focus:border-blue-300 focus:shadow-outline-blue sm:text-sm transition duration-150 ease-in-out"
                             placeholder="Search" type="search">
@@ -67,13 +68,13 @@
                                     </div>
                                     <div class="ml-4">
                                         <div class="text-sm leading-5 font-medium text-gray-900">
-                                            name
+                                            {{$user->name}}
                                         </div>
                                     </div>
                                 </div>
                             </td>
                             <td class="w-4/12 px-6 py-4 whitespace-no-wrap">
-                                <div class="text-sm leading-5 text-gray-900">email</div>
+                                <div class="text-sm leading-5 text-gray-900">{{$user->email}}</div>
                             </td>
                             <td class="px-6 py-4 whitespace-no-wrap">
                                 @if ($user->active)
