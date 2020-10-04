@@ -36,7 +36,7 @@ class ContactForm extends Component
         $contact['phone'] = $this->phone;
         $contact['message'] = $this->message;
 
-        Mail::to('andre@andre.com')->send(new ContactFormMailable($contact));
+        Mail::to('bob@mail.com')->send(new ContactFormMailable($contact));
 
         $this->successMessage = 'We received your message successfully and will get back to you shortly!';
 
