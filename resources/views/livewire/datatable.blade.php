@@ -44,6 +44,11 @@
                                         Name
                                     </button>
 
+                                    <x-sort-icon
+                                        field="name"
+                                        :sortField="$sortField"
+                                        :asc="$asc"
+                                    />
                                 </div>
                             </th>
                             <th
@@ -51,7 +56,11 @@
                                 <div class="flex items-center">
                                     <button wire:click="sortBy('email')"
                                         class="bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">Email</button>
-
+                                        <x-sort-icon
+                                            field="email"
+                                            :sortField="$sortField"
+                                            :asc="$asc"
+                                        />
                                 </div>
                             </th>
                             <th
