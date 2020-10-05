@@ -15,6 +15,7 @@ class Datatable extends Component
     public $sortField;
     public $asc = true;
     public $desc = false;
+    protected $queryString = ['search', 'active', 'asc'];
 
     public function sortBy($field)
     {
