@@ -37,6 +37,7 @@ class Datatable extends Component
         return view('livewire.datatable', [
             'users' => User::query()
                 ->search($this->search)
+                ->where('active', $this->active)
                 ->when($this->sortField, function($query) {
                     $query->orderBy($this->sortField, $this->asc ? 'asc' : 'desc');
                 })
