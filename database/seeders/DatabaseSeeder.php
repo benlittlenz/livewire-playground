@@ -15,9 +15,9 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        \App\Models\User::factory(50)
-            ->has(Post::factory()->count(5), 'posts')
-            ->create();
+        \App\Models\User::factory(50);
+            // ->has(Post::factory()->count(5), 'posts')
+            // ->create();
 
         Post::create(['title' => 'My First post', 'content' => 'Content for my first post']);
         Post::create(['title' => 'My Second post', 'content' => 'Content for my second post']);

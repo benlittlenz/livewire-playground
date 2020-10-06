@@ -1,6 +1,7 @@
 <?php
 
 
+use App\Models\Post;
 use Illuminate\Http\Request;
 use App\Mail\ContactFormMailable;
 use App\Http\Livewire\Auth\Register;
@@ -24,6 +25,12 @@ Route::get('/', function () {
     return view('examples');
 });
 
+Route::get('/post/{post}', function (Post $post) {
+    return view('post.show', [
+        'post' => $post,
+    ]);
+})->name('post.show');
+
 Route::post('/contact', function (Request $request) {
-    
+
 });

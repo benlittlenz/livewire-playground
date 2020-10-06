@@ -17,6 +17,11 @@ class CommentSection extends Component
         'post' => 'required',
     ];
 
+    public function mount(Post $post)
+    {
+        $this->post = $post;
+    }
+
     public function createComment()
     {
         $this->validate();
@@ -32,7 +37,7 @@ class CommentSection extends Component
 
         $this->post = Post::find($this->post->id);
 
-        $this->successMessage =  'Comment was posted!';
+        $this->successMessage =  'Comment posted!';
     }
 
     public function render()
