@@ -10,5 +10,6 @@
 
     <!-- <livewire:contact-form /> -->
     <!-- <livewire:search-dropdown /> -->
-    <livewire:datatable />
+    <!-- <livewire:datatable /> -->
+    <livewire:comment-section />
 @endsection
