@@ -39,4 +39,35 @@ class CommentSectionTest extends TestCase
                 ->assertSee('Comment posted!')
                 ->assertSee('This is a comment');
         }
+
+        /** @test */
+        public function invalid_comments_cannot_be_created()
+        {
+            $post = Post::Create([
+                'title' => 'first post',
+                'content' => 'post content'
+            ]);
+
+            Livewire::test(CommentSection::class)
+                ->set('post', $post)
+                ->call('createComment')
+                ->assertHasErrors(['comment' => 'required'])
+                ->assertSee('The comment field is required');
+        }
+
+        /** @test */
+        public function comment_required_four_chars()
+        {
+            $post = Post::Create([
+                'title' => 'first post',
+                'content' => 'post content'
+            ]);
+
+            Livewire::test(CommentSection::class)
+                ->set('post', $post)
+                ->set('comment', 'abc')
+                ->call('createComment')
+                ->assertHasErrors(['comment' => 'min'])
+                ->assertSee('The comment must be at least 4 characters.');
+        }
 }
